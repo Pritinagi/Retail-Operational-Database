@@ -6,15 +6,13 @@ CREATE TABLE dbo.Categories
 	Category_Id INT IDENTITY(101,1) ,
 	Category_Name VARCHAR(50) NOT NULL,
 
-	CONSTRAINT UQ_Category_Name
+	CONSTRAINT UQ_Category_Category_Name
 		UNIQUE (Category_Name),
 
-	CONSTRAINT Pk_Category_Id
+	CONSTRAINT Pk_Category_Category_Id
 		PRIMARY KEY (Category_Id)
 
 );
-
-
 /*==========--Product_Table--==========*/
 CREATE TABLE dbo.Products
 (
@@ -23,17 +21,16 @@ CREATE TABLE dbo.Products
 	Product_Price DECIMAL(10,2) NOT NULL,
 	Category_Id INT NOT NULL ,
 
-	CONSTRAINT Pk_Product_Id
+	CONSTRAINT Pk_Product_Product_Id
 		PRIMARY KEY (Product_Id),
 
 	CONSTRAINT UQ_Product_Category_Name
 		UNIQUE (Category_Id,Product_Name),
 
-	CONSTRAINT Fk_Product_Category
+	CONSTRAINT Fk_Product_Category_Id
 		FOREIGN KEY (Category_Id)
 	REFERENCES dbo.Categories(Category_Id)
 );
-
 
 
 /*==========--Store_Table--==========*/
@@ -41,15 +38,52 @@ CREATE TABLE dbo.Products
 CREATE TABLE dbo.Stores
 (
 
-	Store_Id INT IDENTITY(401,1),
+	Store_Id INT IDENTITY(301,1),
 	Store_Name VARCHAR(50) NOT Null,
 	Store_City VARCHAR(50) NOT Null,
 
-	CONSTRAINT PK_Store_Id
+	CONSTRAINT PK_Store_Store_Id
 		PRIMARY KEY (Store_Id),
 
-	CONSTRAINT UQ_Store_name
+	CONSTRAINT UQ_Store_Store_name
 		UNIQUE(Store_name,Store_City)
 
 
 )
+
+
+/*==========--Employee_Table--==========*/
+CREATE TABLE dbo.Employees
+(
+
+	Employee_Id INT IDENTITY(401,1),
+	Employee_Name VARCHAR(50) NOT NULL,
+	Employee_Role VARCHAR(50) NOT NULL,
+	Store_Id INT NOT NULL,
+
+	CONSTRAINT PK_Employee_Employee_Id
+		PRIMARY KEY (Employee_Id),
+	CONSTRAINT FK_Employee_Store_Id
+		FOREIGN KEY (Store_Id)
+	REFERENCES dbo.Stores(Store_Id)
+)
+
+
+/*==========--Customer_Table--==========*/
+CREATE TABLE  dbo.Customers
+(
+
+	Customer_Id INT IDENTITY(501,1),
+	Customer_Name VARCHAR(50) NOT NULL,
+	Customer_Email VARCHAR(50),
+	Customer_Phone VARCHAR(15),
+
+	CONSTRAINT PK_Customer_Customer_Id
+		PRIMARY KEY (Customer_Id),
+	CONSTRAINT UQ_Customer_Customer_Email
+		UNIQUE(Customer_Email),
+	CONSTRAINT UQ_Customer_Customer_Phone
+		UNIQUE(Customer_Phone)
+)
+
+/*==========--Customer_Table--==========*/

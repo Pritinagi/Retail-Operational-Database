@@ -172,3 +172,5 @@ CONSTRAINT UQ_Payments_Order
 	UNIQUE(Order_Id)
 
 )
+/*==========--COMPLETED DATABASE SCHEMA--==========*/
+

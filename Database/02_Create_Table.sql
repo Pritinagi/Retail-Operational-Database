@@ -29,7 +29,7 @@ CREATE TABLE dbo.Products
 
 	CONSTRAINT Fk_Product_Category_Id
 		FOREIGN KEY (Category_Id)
-	REFERENCES dbo.Categories(Category_Id)
+		REFERENCES dbo.Categories(Category_Id)
 );
 
 
@@ -65,7 +65,7 @@ CREATE TABLE dbo.Employees
 		PRIMARY KEY (Employee_Id),
 	CONSTRAINT FK_Employee_Store_Id
 		FOREIGN KEY (Store_Id)
-	REFERENCES dbo.Stores(Store_Id)
+		REFERENCES dbo.Stores(Store_Id)
 )
 
 
@@ -86,4 +86,27 @@ CREATE TABLE  dbo.Customers
 		UNIQUE(Customer_Phone)
 )
 
-/*==========--Customer_Table--==========*/
+/*==========--Order_Table--==========*/
+CREATE TABLE dbo.Orders
+(
+
+Order_Id INT IDENTITY(1001,1),
+Customer_Id INT NOT NULL,
+Employee_Id INT NOT NULL, 
+Order_Date DATETIME NOT NULL,
+Total_Amount DECIMAL(10,2) NOT NULL,
+
+
+CONSTRAINT PK_Order_Order_Id
+	PRIMARY KEY(Order_Id),
+CONSTRAINT FK_Order_Customer_Id
+	FOREIGN KEY(Customer_Id)
+	REFERENCES dbo.Customers(Customer_Id), 
+
+CONSTRAINT FK_Order_Employee_Id
+	FOREIGN KEY(Employee_Id)
+	REFERENCES dbo.Employees(Employee_Id)
+
+
+)
+

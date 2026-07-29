@@ -110,3 +110,48 @@ CONSTRAINT FK_Order_Employee_Id
 
 )
 
+/*==========--OrderItem_Table--==========*/
+CREATE TABLE dbo.OrderItems
+(
+
+OrderItem_Id INT IDENTITY(2001,1),
+Order_Id INT NOT NULL,
+Product_Id INT NOT NULL,
+Quantity INT NOT NULL,
+Unit_Price Decimal(10,2) NOT NULL,
+
+
+CONSTRAINT PK_OrderItem_OrderItem_Id
+	PRIMARY KEY(OrderItem_Id),
+CONSTRAINT FK_OrderItems_Order_Id
+	FOREIGN KEY(Order_Id)
+	REFERENCES dbo.Orders(Order_Id),
+CONSTRAINT FK_OrderItems_Product_Id
+	FOREIGN KEY(Product_Id)
+	REFERENCES dbo.Products(Product_Id),
+CONSTRAINT UQ_OrderItem_OrderDetails
+	UNIQUE(Order_Id,Product_id),
+)
+/*==========--Inventory_Table--==========*/
+CREATE TABLE dbo.Inventories
+(
+
+Inventory_Id INT IDENTITY(3001,1),
+Store_Id INT NOT NULL,
+Product_Id INT NOT NULL,
+Quantity INT NOT NULL,
+
+
+CONSTRAINT PK_Inventories_Inventory_Id
+	PRIMARY KEY(Inventory_Id),
+CONSTRAINT FK_Inventories_Store_Id
+	FOREIGN KEY(Store_Id)
+	REFERENCES dbo.Stores(Store_Id),
+CONSTRAINT FK_Inventories_Product_Id
+	FOREIGN KEY(Product_Id)
+	REFERENCES dbo.Products(Product_Id),
+CONSTRAINT UQ_Inventory_Store_Product
+	UNIQUE(Store_Id,Product_Id)
+)
+
+

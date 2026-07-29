@@ -154,4 +154,21 @@ CONSTRAINT UQ_Inventory_Store_Product
 	UNIQUE(Store_Id,Product_Id)
 )
 
+/*==========--Payments_Table--==========*/
+CREATE TABLE dbo.Payments
+(
 
+Payment_Id INT IDENTITY(4001,1),
+Order_Id INT NOT NULL,
+Payment_Date DATETIME ,
+Payment_Method VARCHAR(50) NOT NULL,
+
+CONSTRAINT PK_Payments_Payment_id
+	PRIMARY KEY(Payment_Id),
+CONSTRAINT FK_Payments_Order_Id
+	FOREIGN KEY(Order_Id)
+	REFERENCES dbo.Orders(Order_Id),
+CONSTRAINT UQ_Payments_Order
+	UNIQUE(Order_Id)
+
+)

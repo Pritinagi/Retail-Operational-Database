@@ -9,7 +9,7 @@ CREATE TABLE dbo.Categories
 	CONSTRAINT UQ_Category_Category_Name
 		UNIQUE (Category_Name),
 
-	CONSTRAINT Pk_Category_Category_Id
+	CONSTRAINT PK_Category_Category_Id
 		PRIMARY KEY (Category_Id)
 
 );
@@ -21,13 +21,13 @@ CREATE TABLE dbo.Products
 	Product_Price DECIMAL(10,2) NOT NULL,
 	Category_Id INT NOT NULL ,
 
-	CONSTRAINT Pk_Product_Product_Id
+	CONSTRAINT PK_Product_Product_Id
 		PRIMARY KEY (Product_Id),
 
 	CONSTRAINT UQ_Product_Category_Name
 		UNIQUE (Category_Id,Product_Name),
 
-	CONSTRAINT Fk_Product_Category_Id
+	CONSTRAINT FK_Product_Category_Id
 		FOREIGN KEY (Category_Id)
 		REFERENCES dbo.Categories(Category_Id)
 );
@@ -130,7 +130,7 @@ CONSTRAINT FK_OrderItems_Product_Id
 	FOREIGN KEY(Product_Id)
 	REFERENCES dbo.Products(Product_Id),
 CONSTRAINT UQ_OrderItem_OrderDetails
-	UNIQUE(Order_Id,Product_id),
+	UNIQUE(Order_Id,Product_id)
 )
 /*==========--Inventory_Table--==========*/
 CREATE TABLE dbo.Inventories

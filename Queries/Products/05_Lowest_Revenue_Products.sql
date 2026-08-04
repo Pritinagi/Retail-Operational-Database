@@ -4,7 +4,7 @@
 SELECT TOP 10
 	p.Product_Id,
 	p.Product_Name,
-	SUM(oi.unit_price*oi.Quantity) as Revenue
+	ISNULL(SUM(oi.unit_price*oi.Quantity),0) as Revenue
 FROM dbo.Products as p
 LEFT JOIN dbo.OrderItems as oi
 ON p.Product_Id=oi.Product_Id

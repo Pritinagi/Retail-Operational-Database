@@ -8,5 +8,5 @@ SELECT TOP 10
 FROM dbo.Products as p
 LEFT JOIN dbo.OrderItems as oi
 ON p.Product_Id=oi.Product_Id
-GROUP BY p.Product_Id,p.Product_Name
+GROUP BY p.Product_Id,p.Product_Name  
 ORDER BY Revenue ASC

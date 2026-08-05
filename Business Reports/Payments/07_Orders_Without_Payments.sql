@@ -3,7 +3,7 @@
 
 SELECT 
 	o.Order_Id
-FROM dbo.Payments as p
-LEFT JOIN dbo.Orders as o
-On p.Order_Id=o.Order_Id
+FROM dbo.Orders as o
+LEFT JOIN dbo.Payments as p
+On o.Order_Id=p.Order_Id
 WHERE p.Order_Id is null

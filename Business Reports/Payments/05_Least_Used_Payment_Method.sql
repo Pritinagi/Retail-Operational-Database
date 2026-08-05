@@ -1,12 +1,12 @@
 /*==========-Purpose -Identify the least frequently used payment method. -==========*/
 
 SELECT 
-	TOP 1
+	top 1
 	p.Payment_Method,
 	COUNT(*) as LeastFrequent
 FROM dbo.Payments as p
 Group BY Payment_Method
-Order By Payment_Method asc;
+Order By LeastFrequent asc;
 
 
 --or

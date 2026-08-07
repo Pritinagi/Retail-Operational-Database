@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 # Generator utility files
 Data/Generators/utils.py
+# Hide data generation scripts
+Data/Generators/*.py

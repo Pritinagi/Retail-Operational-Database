@@ -1,3 +1,8 @@
+USE RetailOperationalDatabase;
+GO
+
+BEGIN TRANSACTION;
+
 DELETE FROM dbo.Payments;
 DELETE FROM dbo.Inventories;
 DELETE FROM dbo.OrderItems;
@@ -16,3 +21,5 @@ DBCC CHECKIDENT ('dbo.Orders', RESEED, 1000);
 DBCC CHECKIDENT ('dbo.OrderItems', RESEED, 2000);
 DBCC CHECKIDENT ('dbo.Inventories', RESEED, 3000);
 DBCC CHECKIDENT ('dbo.Payments', RESEED, 4000);
+
+COMMIT TRANSACTION;

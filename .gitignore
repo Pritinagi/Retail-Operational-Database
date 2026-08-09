@@ -1,7 +1,21 @@
+# =========================
+# Python Environment
+# =========================
+
 .venv/
 __pycache__/
 *.pyc
-# Generator utility files
-Data/Generators/utils.py
-# Hide data generation scripts
-Data/Generators/*.py
+
+
+# =========================
+# Ignore ALL Python files under Data
+# =========================
+
+Data/**/*.py
+
+
+# =========================
+# Generated CSV files
+# =========================
+
+Data/CSV/*.csv

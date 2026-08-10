@@ -9,8 +9,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_FOLDER = PROJECT_ROOT / "Data"
 CSV_FOLDER = DATA_FOLDER / "CSV"
 
-# Create CSV folder automatically if it doesn't exist
 CSV_FOLDER.mkdir(parents=True, exist_ok=True)
+
 
 # -----------------------------
 # Dataset Size
@@ -24,9 +24,11 @@ NUM_CUSTOMERS = 1000
 NUM_ORDERS = 5000
 NUM_ORDER_ITEMS = 15000
 NUM_PAYMENTS = 5000
+NUM_INVENTORIES = 20
+
 
 # -----------------------------
-# SQL Server Identity Values
+# Starting IDs
 # -----------------------------
 
 CATEGORY_ID_START = 101
